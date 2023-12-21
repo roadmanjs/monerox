@@ -1,0 +1,13 @@
+{
+    "success": true,
+    "data": {
+        "accountIndex": 0,
+        "index": 3,
+        "address": "79YFd9eVuyXhSDg1vBQWgVEuepeYLGo2qADrv4DbZMwRWiKzS8mRJVNEKqih8kXVqEYMp6qhZx25J4JtbQjA2QweK2S1Yyb",
+        "balance": "0",
+        "unlockedBalance": "0",
+        "numUnspentOutputs": 0,
+        "isUsed": false,
+        "numBlocksToUnlock": 0
+    }
+}
