@@ -1,13 +1,13 @@
 {
-    "name": "monerox",
+    "name": "@roadmanjs/monerox",
     "version": "0.0.1",
-    "description": "Simple starter template for ExpressJs and TypeScript based on expressjs/generator and TypeScript-Node-Starter",
+    "description": "MoneroX is a simple API to generate Monero addresses and integrated Monero payments",
     "main": "index.js",
     "scripts": {
-        "dev": "nodemon src/index.ts",
+        "dev": "nodemon src/server.ts",
         "start": "npm run serve",
         "build": "npm run build-ts",
-        "serve": "node build/index.js",
+        "serve": "node build/server.js",
         "test": "jest --coverage=false --verbose",
         "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
         "watch-node": "nodemon build/index.js",
