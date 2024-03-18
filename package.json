@@ -1,6 +1,6 @@
 {
     "name": "@roadmanjs/monerox",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "MoneroX is a simple API to generate Monero addresses and integrated Monero payments",
     "main": "index.js",
     "scripts": {
