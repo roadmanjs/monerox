@@ -24,7 +24,12 @@ export const getRandomId = () => {
 
 export const getWalletRpc = async () => {
     if (!walletRpc) {
-        walletRpc = await moneroTs.connectToWalletRpc(walletRpcURL, walletRpcUser, walletRpcPassword);
+        // console.log("connecting to wallet rpc", walletRpcURL);
+        walletRpc = await moneroTs.connectToWalletRpc({
+            uri: walletRpcURL, username: walletRpcUser, password: walletRpcPassword,
+            rejectUnauthorized: false,
+        });
+        // console.log("connected to wallet rpc", walletRpc);
     }
     return walletRpc;
 }
@@ -155,7 +160,7 @@ export const createSubAddress = async (args: MoneroWalletConfig, label: string):
     if (!mainWallet) {
         throw new Error("no main wallet");
     }
-    
+
     const subaddress = await mainWallet.createSubaddress(0, label);
     return subaddress;
 };
