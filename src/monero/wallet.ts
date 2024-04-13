@@ -32,31 +32,35 @@ export const getWalletRpc = async () => {
         // console.log("connected to wallet rpc", walletRpc);
     }
     return walletRpc;
-}
+};
 
 export const getWallet = async (args: MoneroWalletConfig, createNew = true): Promise<MoneroWalletRpc> => {
     let wallet: MoneroWalletRpc;
     let rpc: MoneroWalletRpc;
 
+    const pw = args.password;
     const pwFile = `${walletsDir}/${args.path}.pw`;
 
     try {
+        console.log("getWallet", { pwFile });
         rpc = await getWalletRpc();
 
         if (!rpc) {
             throw new Error("no rpc");
         }
 
-        if (!fs.existsSync(pwFile) && !createNew) {
+        if (!pw && !fs.existsSync(pwFile) && !createNew) {
+            console.log("!fs.existsSync(pwFile) && !createNew");
             throw new Error("wallet not found");
         }
-
+        
         if (isEmpty(args.password)) {
             const pw = fs.readFileSync(pwFile, { encoding: "utf8" });
             args.password = pw;
         }
 
         const existingWallet = await rpc.openWallet(args.path, args.password);
+        console.log("existingWallet rpc", { existingWallet });
         if (!existingWallet) {
             throw new Error("existing wallet not found");
         }
@@ -64,12 +68,12 @@ export const getWallet = async (args: MoneroWalletConfig, createNew = true): Pro
     }
     catch (error) {
         const existingError = error.message === "existing wallet not found" || includes(error.message, "Failed to open wallet");
-        console.error("error", error.message);
+        console.error("error getWallet", error.message);
 
         if (createNew && existingError) {
             if (!fs.existsSync(walletsDir)) {
                 throw new Error("walletsDir file not found");
-            };
+            }
 
             wallet = await rpc.createWallet(args);
 
@@ -78,17 +82,17 @@ export const getWallet = async (args: MoneroWalletConfig, createNew = true): Pro
             const pwFile = `${walletsDir}/${args.path}.pw`;
             fs.writeFileSync(pwFile, args.password, { encoding: "utf8" });
 
-        };
+        }
     } finally {
         return wallet;
     }
-}
+};
 
 
 export interface SendTx {
     destination: string;
     amount: bigint;
-};
+}
 
 export const sendTx = async (args: MoneroWalletConfig, dest: SendTx): Promise<MoneroTxWallet | null> => {
     const { amount, destination } = dest;
@@ -98,19 +102,19 @@ export const sendTx = async (args: MoneroWalletConfig, dest: SendTx): Promise<Mo
     }
 
     // send funds from RPC wallet to WebAssembly wallet
-    let createdTx = await wallet.createTx({
+    const createdTx = await wallet.createTx({
         accountIndex: 0,
         address: destination,
         amount, // send 0.25 XMR (denominated in atomic units)
-        relay: true // create transaction and relay to the network if true
+        relay: true, // create transaction and relay to the network if true
     });
 
     return createdTx;
-}
+};
 
 export const getTxs = async (args: MoneroWalletConfig, query: MoneroTxQuery): Promise<MoneroTxWallet[]> => {
     try {
-        let qry = query;
+        const qry = query;
         const wallet = await getWallet(args, false);
         if (!wallet) {
             throw new Error("no wallet");
@@ -127,14 +131,14 @@ export const getTxs = async (args: MoneroWalletConfig, query: MoneroTxQuery): Pr
         console.error("error", error);
         return [];
     }
-}
+};
 
 
 export const listenMain = async () => {
     try {
         const mainWallet = await getWallet({ path: mainWalletPath, password: mainWalletPassword } as any, false);
         if (!mainWallet) {
-            throw new Error("no main wallet");
+            throw new Error(`no main wallet ${mainWalletPath}`);
         }
 
         await mainWallet.sync(new class extends moneroTs.MoneroWalletListener {
@@ -153,7 +157,7 @@ export const listenMain = async () => {
     catch (error) {
         console.error("error", error);
     }
-}
+};
 
 export const createSubAddress = async (args: MoneroWalletConfig, label: string): Promise<MoneroSubaddress> => {
     const mainWallet = await getWallet(args, false);

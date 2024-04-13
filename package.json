@@ -1,6 +1,6 @@
 {
     "name": "@roadmanjs/monerox",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "MoneroX is a simple API to generate Monero addresses and integrated Monero payments",
     "main": "build/index.js",
     "types": "build/index.d.ts",
@@ -33,7 +33,7 @@
         "express": "^4.16.2",
         "http-errors": "^1.7.1",
         "lodash": "^4.17.21",
-        "monero-ts": "^0.9.4",
+        "monero-ts": "^0.9.7",
         "morgan": "^1.9.1",
         "pug": "^3.0.1",
         "uuid": "^9.0.1"

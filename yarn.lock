@@ -4070,10 +4070,10 @@ mkdirp@1.x:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
-monero-ts@^0.9.4:
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/monero-ts/-/monero-ts-0.9.4.tgz#e8944768f8e7efec9f8e25f6a7d792572e061d97"
-  integrity sha512-sNQ17DMXg65S/4kQYeOrnYKCQRzIyBr7Q9CAIEQWMWJ7jfBFYeZrpnyi4dMXUJnbcLrw5IXweuiZ61dMC7tTkQ==
+monero-ts@^0.9.7:
+  version "0.9.7"
+  resolved "https://registry.yarnpkg.com/monero-ts/-/monero-ts-0.9.7.tgz#89dff91ba99721f07fda88fecd7c93bb30151d40"
+  integrity sha512-YStuJuxS6MGNECIDqZYAztJcDTQZlYTfa9MSebNLhDBOoU9guMdphRwy/yhDd6DsYIaed6gflFMOq4hRuGA8Ow==
   dependencies:
     "@babel/runtime" "^7.23.2"
     "@types/node" "^20.6.0"
@@ -4089,7 +4089,7 @@ monero-ts@^0.9.4:
     text-encoding "^0.7.0"
     tls "0.0.1"
     uuid "3.3.2"
-    web-worker "^1.2.0"
+    web-worker "^1.3.0"
 
 morgan@^1.9.1:
   version "1.10.0"
@@ -5924,10 +5924,10 @@ walker@^1.0.7, walker@~1.0.5:
   dependencies:
     makeerror "1.0.12"
 
-web-worker@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/web-worker/-/web-worker-1.2.0.tgz#5d85a04a7fbc1e7db58f66595d7a3ac7c9c180da"
-  integrity sha512-PgF341avzqyx60neE9DD+XS26MMNMoUQRz9NOZwW32nPQrF6p77f1htcnjBSEV8BGMKZ16choqUG4hyI0Hx7mA==
+web-worker@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/web-worker/-/web-worker-1.3.0.tgz#e5f2df5c7fe356755a5fb8f8410d4312627e6776"
+  integrity sha512-BSR9wyRsy/KOValMgd5kMyr3JzpdeoR9KVId8u5GVlTTAtNChlsE4yTxeY7zMdNSyOmoKBv8NH2qeRY9Tg+IaA==
 
 webidl-conversions@^5.0.0:
   version "5.0.0"

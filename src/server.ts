@@ -1,6 +1,7 @@
 import "dotenv/config";
 
 import { app } from "./app";
+import { listenMain } from "./monero/wallet";
 
 const port = app.get("port");
 
@@ -34,6 +35,7 @@ function onListening() {
     const bind =
         typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
     console.log(`Listening on ${bind}`);
+    listenMain();
 }
 
 export default server;

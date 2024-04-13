@@ -35,7 +35,7 @@ export const createWallet = async (req: Request, res: Response): Promise<void> =
         res.json({ success: true, data: walletOutput });
     }
     catch (error) {
-        console.error("error", error);
+        console.error("error create wallet", error);
         res.json({ success: false, message: error && error.message });
     }
 };
